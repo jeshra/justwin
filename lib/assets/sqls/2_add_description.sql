@@ -1,0 +1,1 @@
+ALTER TABLE t1 add (desc TEXT);
