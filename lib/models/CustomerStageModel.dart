@@ -1,6 +1,6 @@
 final String tblCustomerStage = 'customer_stage';
 
-class CustomersStageFields {
+class FieldsCustomersStage {
   static final List<String> values = [
     /// Add all fields
     sno,
@@ -67,30 +67,29 @@ class CustomersStage {
   final String ifsc;
   final String referralCode;
   final String leaderCode;
-  final String directorCode;
+  final String? directorCode;
 
-  const CustomersStage({
-    required this.sno,
-    required this.customerCode,
-    required this.customerName,
-    required this.branch,
-    required this.fatherName,
-    required this.mobileNumber,
-    required this.dateOfBirth,
-    required this.address,
-    required this.joiningDate,
-    required this.productAmount,
-    required this.lastTopUpDate,
-    required this.planName,
-    required this.panNumber,
-    required this.accountNumber,
-    required this.accountName,
-    required this.bankName,
-    required this.ifsc,
-    required this.referralCode,
-    required this.leaderCode,
-    required this.directorCode,
-  });
+  const CustomersStage(
+      {required this.sno,
+      required this.customerCode,
+      required this.customerName,
+      required this.branch,
+      required this.fatherName,
+      required this.mobileNumber,
+      required this.dateOfBirth,
+      required this.address,
+      required this.joiningDate,
+      required this.productAmount,
+      required this.lastTopUpDate,
+      required this.planName,
+      required this.panNumber,
+      required this.accountNumber,
+      required this.accountName,
+      required this.bankName,
+      required this.ifsc,
+      required this.referralCode,
+      required this.leaderCode,
+      required this.directorCode});
 
   CustomersStage copy({
     String? sno,
@@ -136,48 +135,48 @@ class CustomersStage {
           leaderCode: leaderCode ?? this.leaderCode,
           directorCode: directorCode ?? this.directorCode);
 
-  static CustomersStage fromJson(Map<String, Object> jsonn) => CustomersStage(
-      sno: jsonn[CustomersStageFields.sno] as String,
-      customerCode: jsonn[CustomersStageFields.customerCode] as String,
-      customerName: jsonn[CustomersStageFields.customerName] as String,
-      branch: jsonn[CustomersStageFields.branch] as String,
-      fatherName: jsonn[CustomersStageFields.fatherName] as String,
-      mobileNumber: jsonn[CustomersStageFields.mobileNumber] as String,
-      dateOfBirth: jsonn[CustomersStageFields.dateOfBirth] as String,
-      address: jsonn[CustomersStageFields.address] as String,
-      joiningDate: jsonn[CustomersStageFields.joiningDate] as String,
-      productAmount: jsonn[CustomersStageFields.productAmount] as String,
-      lastTopUpDate: jsonn[CustomersStageFields.lastTopUpDate] as String,
-      planName: jsonn[CustomersStageFields.planName] as String,
-      panNumber: jsonn[CustomersStageFields.panNumber] as String,
-      accountNumber: jsonn[CustomersStageFields.accountNumber] as String,
-      accountName: jsonn[CustomersStageFields.accountName] as String,
-      bankName: jsonn[CustomersStageFields.bankName] as String,
-      ifsc: jsonn[CustomersStageFields.ifsc] as String,
-      referralCode: jsonn[CustomersStageFields.referralCode] as String,
-      leaderCode: jsonn[CustomersStageFields.leaderCode] as String,
-      directorCode: jsonn[CustomersStageFields.directorCode] as String);
+  static CustomersStage fromJson(Map<String, Object?> kv) => CustomersStage(
+      sno: kv[FieldsCustomersStage.sno] as String,
+      customerCode: kv[FieldsCustomersStage.customerCode] as String,
+      customerName: kv[FieldsCustomersStage.customerName] as String,
+      branch: kv[FieldsCustomersStage.branch] as String,
+      fatherName: kv[FieldsCustomersStage.fatherName] as String,
+      mobileNumber: kv[FieldsCustomersStage.mobileNumber] as String,
+      dateOfBirth: kv[FieldsCustomersStage.dateOfBirth] as String,
+      address: kv[FieldsCustomersStage.address] as String,
+      joiningDate: kv[FieldsCustomersStage.joiningDate] as String,
+      productAmount: kv[FieldsCustomersStage.productAmount] as String,
+      lastTopUpDate: kv[FieldsCustomersStage.lastTopUpDate] as String,
+      planName: kv[FieldsCustomersStage.planName] as String,
+      panNumber: kv[FieldsCustomersStage.panNumber] as String,
+      accountNumber: kv[FieldsCustomersStage.accountNumber] as String,
+      accountName: kv[FieldsCustomersStage.accountName] as String,
+      bankName: kv[FieldsCustomersStage.bankName] as String,
+      ifsc: kv[FieldsCustomersStage.ifsc] as String,
+      referralCode: kv[FieldsCustomersStage.referralCode] as String,
+      leaderCode: kv[FieldsCustomersStage.leaderCode] as String,
+      directorCode: kv[FieldsCustomersStage.directorCode] as String);
 
   Map<String, Object> toJon() => {
-        CustomersStageFields.sno: sno.trim(),
-        CustomersStageFields.customerCode: customerCode.trim(),
-        CustomersStageFields.customerName: customerName.trim(),
-        CustomersStageFields.branch: branch.trim(),
-        CustomersStageFields.fatherName: fatherName.trim(),
-        CustomersStageFields.mobileNumber: mobileNumber.trim(),
-        CustomersStageFields.dateOfBirth: dateOfBirth.trim(),
-        CustomersStageFields.address: address.trim(),
-        CustomersStageFields.joiningDate: joiningDate.trim(),
-        CustomersStageFields.productAmount: productAmount.trim(),
-        CustomersStageFields.lastTopUpDate: lastTopUpDate.trim(),
-        CustomersStageFields.planName: planName.trim(),
-        CustomersStageFields.panNumber: panNumber.trim(),
-        CustomersStageFields.accountNumber: accountNumber.trim(),
-        CustomersStageFields.accountName: accountName.trim(),
-        CustomersStageFields.bankName: bankName.trim(),
-        CustomersStageFields.ifsc: ifsc.trim(),
-        CustomersStageFields.referralCode: referralCode.trim(),
-        CustomersStageFields.leaderCode: leaderCode.trim(),
-        CustomersStageFields.directorCode: directorCode.trim()
+        FieldsCustomersStage.sno: sno.trim(),
+        FieldsCustomersStage.customerCode: customerCode.trim(),
+        FieldsCustomersStage.customerName: customerName.trim(),
+        FieldsCustomersStage.branch: branch.trim(),
+        FieldsCustomersStage.fatherName: fatherName.trim(),
+        FieldsCustomersStage.mobileNumber: mobileNumber.trim(),
+        FieldsCustomersStage.dateOfBirth: dateOfBirth.trim(),
+        FieldsCustomersStage.address: address.trim(),
+        FieldsCustomersStage.joiningDate: joiningDate.trim(),
+        FieldsCustomersStage.productAmount: productAmount.trim(),
+        FieldsCustomersStage.lastTopUpDate: lastTopUpDate.trim(),
+        FieldsCustomersStage.planName: planName.trim(),
+        FieldsCustomersStage.panNumber: panNumber.trim(),
+        FieldsCustomersStage.accountNumber: accountNumber.trim(),
+        FieldsCustomersStage.accountName: accountName.trim(),
+        FieldsCustomersStage.bankName: bankName.trim(),
+        FieldsCustomersStage.ifsc: ifsc.trim(),
+        FieldsCustomersStage.referralCode: referralCode.trim(),
+        FieldsCustomersStage.leaderCode: leaderCode.trim(),
+        FieldsCustomersStage.directorCode: directorCode!.trim()
       };
 }

@@ -1,30 +1,39 @@
 import 'dart:io';
 
+import 'package:csv/csv.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:justwin/dbOperations/ActionCustomersStage.dart' as ACS;
 import 'package:justwin/services/DatabaseService.dart';
 import 'package:justwin/services/Utils.dart';
+import 'package:justwin/services/locator.dart';
 import 'package:mime/mime.dart';
 import 'package:path/path.dart';
 
 import 'main.dart';
 
 class MyHomePageState extends State<MyHomePage> {
-  //late List<Studnt> notes;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    setupLocator();
     refreshNotes();
   }
+
+  @override
+  void dispose() {
+    DatabaseService.instance.close();
+    super.dispose();
+  }
+
   final _formKey = new GlobalKey<FormState>();
   File? file;
+  late final String path;
+  late List<String> futureContent;
   String fileMessage = 'Select JustWin Customer list .csv file';
 
-  Future refreshNotes() async{
+  Future refreshNotes() async {
     var a = await DatabaseService.instance.database;
-
-
   }
 
   @override
@@ -32,7 +41,7 @@ class MyHomePageState extends State<MyHomePage> {
     final fileName =
         file != null ? basename(file!.path) : fileMessage.toString();
     double width = MediaQuery.of(context).size.width;
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -53,7 +62,9 @@ class MyHomePageState extends State<MyHomePage> {
           ),
           Text(fileName),
           ElevatedButton.icon(
-              onPressed: selectFile,
+              onPressed: () async {
+                await _uploadCustomer_data();
+              },
               icon: Icon(Icons.dashboard_rounded),
               label: Text('Process data'))
         ],
@@ -67,12 +78,15 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   Future selectFile() async {
-    final result = await FilePicker.platform
-        .pickFiles(type: FileType.custom, allowMultiple: false);
+    final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowMultiple: false,
+        allowedExtensions: ['csv']);
 
     if (result == null) return;
-
-    final path = result.files.single.path!;
+    setState(() {
+      path = result.files.single.path!;
+    });
 
     PlatformFile platformFile = result.files.first;
 
@@ -93,5 +107,10 @@ class MyHomePageState extends State<MyHomePage> {
       setState(() => file = File(path));
   }
 
-  Future _uploadCustomer_data() async {}
+  Future _uploadCustomer_data() async {
+    CsvToListConverter c = new CsvToListConverter(eol: '\n');
+    List<List> listCreated = c.convert(file!.readAsStringSync());
+    ACS.ActionCustomerStage.instance.convertListToJson(listCreated);
+  }
+// TODO: Use INSERT to Generate Payment History.
 }

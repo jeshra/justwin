@@ -1,0 +1,22 @@
+CREATE TABLE customer_stage (
+    sno TEXT,
+    customerCode TEXT,
+    customerName TEXT,
+    branch TEXT,
+    fatherName TEXT,
+    mobileNumber TEXT,
+    dateOfBirth TEXT,
+    address TEXT,
+    joiningDate TEXT,
+    productAmount TEXT,
+    lastTopUpDate TEXT,
+    planName TEXT,
+    panNumber TEXT,
+    accountNumber TEXT,
+    accountName TEXT,
+    bankName TEXT,
+    ifsc TEXT,
+    referralCode TEXT,
+    leaderCode TEXT,
+    directorCode TEXT
+);
